@@ -58,13 +58,13 @@ public class EncoderOperations {
         result.append("\n");
         result.append("\n").append("==================================").append("\n").append("STATISTICS");
 
-        result.append("\n\nN GRAM RESULTS: ");
+        result.append("\n\nN gram results of the subset between target and modifier: ");
         StringBuilder nGramsResult = getNGrams(subset);
         result.append("\n").append(nGramsResult);
 
 
         StringBuilder posOutput = getPOS(subset);
-        result.append("\nPOS TAGGING RESULTS: ");
+        result.append("\nPOS tagging results of the subset between target and modifier: ");
         result.append("\n").append(posOutput);
         result.append("\n");
         result.append("\n");
