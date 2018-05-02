@@ -14,7 +14,7 @@ public class Controller {
     public static void main(String[] args) {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader(EncoderOperations.class.getResource("/data/Example_Fhx-ca_sentences.txt").getPath()));
-            String lineJustFetched;
+            String line;
             String[] wordsArray;
             bufferedReader.readLine();
             String result = "\n\n";
@@ -22,11 +22,11 @@ public class Controller {
 
             while (true) {
 
-                lineJustFetched = bufferedReader.readLine();
-                if (lineJustFetched == null) {
+                line = bufferedReader.readLine();
+                if (line == null) {
                     break;
                 } else {
-                    wordsArray = lineJustFetched.split("\t");
+                    wordsArray = line.split("\t");
                     String target = wordsArray[1];
                     String modifier = wordsArray[2];
                     String rawText = wordsArray[3];
