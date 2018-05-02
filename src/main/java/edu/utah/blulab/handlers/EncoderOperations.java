@@ -14,7 +14,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class Operations {
+public class EncoderOperations {
 
     public static String getEncodedFeatures(String target, String modifier, String rawText) throws IOException {
 
@@ -148,14 +148,14 @@ public class Operations {
         StringBuilder result = new StringBuilder();
         InputStream tokenModelIn = null;
         InputStream posModelIn = null;
-        tokenModelIn = new FileInputStream(Operations.class.getResource("/bin/en-token.bin").getPath());
+        tokenModelIn = new FileInputStream(EncoderOperations.class.getResource("/bin/en-token.bin").getPath());
         TokenizerModel tokenModel = new TokenizerModel(tokenModelIn);
         Tokenizer tokenizer = new TokenizerME(tokenModel);
         String tokenList[] = tokenizer.tokenize(subset);
 
         // Parts-Of-Speech Tagging
         // reading parts-of-speech model to a stream
-        posModelIn = new FileInputStream(Operations.class.getResource("/bin/en-pos-maxent.bin").getPath());
+        posModelIn = new FileInputStream(EncoderOperations.class.getResource("/bin/en-pos-maxent.bin").getPath());
 
         // loading the parts-of-speech model from stream
         POSModel posModel = new POSModel(posModelIn);
