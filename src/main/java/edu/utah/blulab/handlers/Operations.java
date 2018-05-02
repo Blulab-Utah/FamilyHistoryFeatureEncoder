@@ -42,12 +42,12 @@ public class Operations {
         if (null != modifierPosition)
             result.append("\nModifier Position: ").append(modifierPosition);
 
-        String wordsProceedingTarget = getWordsProceedingToken(rawText.toLowerCase().trim(), targetToken.toLowerCase().trim());
-        if (!BlulabUtilities.isNullOrEmpty(wordsProceedingTarget))
-            result.append("\nWords Proceeding Target: ").append(wordsProceedingTarget);
-        String wordsProceedingModifier = getWordsProceedingToken(rawText.toLowerCase().trim(), modifierToken.toLowerCase().trim());
-        if (!BlulabUtilities.isNullOrEmpty(wordsProceedingModifier))
-            result.append("\nWords Proceeding Modifier: ").append(wordsProceedingModifier);
+        String wordsPrecedingTarget = getWordsPrecedingToken(rawText.toLowerCase().trim(), targetToken.toLowerCase().trim());
+        if (!BlulabUtilities.isNullOrEmpty(wordsPrecedingTarget))
+            result.append("\nWords Preceding Target: ").append(wordsPrecedingTarget);
+        String wordsPrecedingModifier = getWordsPrecedingToken(rawText.toLowerCase().trim(), modifierToken.toLowerCase().trim());
+        if (!BlulabUtilities.isNullOrEmpty(wordsPrecedingModifier))
+            result.append("\nWords Preceding Modifier: ").append(wordsPrecedingModifier);
 
         String targetCase = getStringCase(target.trim());
         String modifierCase = getStringCase(modifier.trim());
@@ -93,14 +93,14 @@ public class Operations {
             return "MIXED";
     }
 
-    private static String getWordsProceedingToken(String rawText, String token) {
+    private static String getWordsPrecedingToken(String rawText, String token) {
         String newText = rawText.replaceAll("-", " ");
         if (StringUtils.containsIgnoreCase(rawText, token) || (StringUtils.containsIgnoreCase(newText, token))) {
             int index = rawText.indexOf(token);
             if (index == -1)
                 index = newText.indexOf(token);
 
-            String output = rawText.substring(index + token.length(), rawText.length() - 1);
+            String output = rawText.substring(0,index);
             output = output.replaceAll("\\p{Punct}", " ");
             return output;
         } else
