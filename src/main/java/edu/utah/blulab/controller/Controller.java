@@ -13,16 +13,16 @@ public class Controller {
     private static Logger logger = Logger.getLogger(Controller.class);
     public static void main(String[] args) {
         try {
-            BufferedReader buf = new BufferedReader(new FileReader(EncoderOperations.class.getResource("/data/Example_Fhx-ca_sentences.txt").getPath()));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(EncoderOperations.class.getResource("/data/Example_Fhx-ca_sentences.txt").getPath()));
             String lineJustFetched;
             String[] wordsArray;
-            buf.readLine();
+            bufferedReader.readLine();
             String result = "\n\n";
             result += "\n-----------------------FAMILY HISTORY FEATURES---------------------\n\n";
 
             while (true) {
 
-                lineJustFetched = buf.readLine();
+                lineJustFetched = bufferedReader.readLine();
                 if (lineJustFetched == null) {
                     break;
                 } else {
@@ -41,7 +41,7 @@ public class Controller {
 
             FileUtils.writeStringToFile(new File("FamilyHistoryFeatures.txt"), result,"UTF-8");
 
-            buf.close();
+            bufferedReader.close();
 
         } catch (Exception e) {
             e.printStackTrace();
