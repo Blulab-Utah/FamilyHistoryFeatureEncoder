@@ -173,6 +173,8 @@ public class BlulabUtilities {
                     count++;
                     punc.append("\' ");
                     break;
+                default:
+                    break;
             }
         }
         List<String> result = new ArrayList<>();
@@ -184,8 +186,8 @@ public class BlulabUtilities {
 
     public static int getTokenCount(String targetToken, String modifierToken, String rawText) {
         String subset = getRawSubset(targetToken, modifierToken, rawText).get("subset");
-        if (null != subset)
-            return subset.length();
+        if (!isNullOrEmpty(subset))
+            return (subset.trim().split(" ")).length;
         else
             return -1;
     }
@@ -218,7 +220,7 @@ public class BlulabUtilities {
         return subsetMap;
     }
 
-    public static boolean isContentExist(String targetToken, String modifierToken, String rawText) {
+    private static boolean isContentExist(String targetToken, String modifierToken, String rawText) {
         String newText = rawText.replaceAll("-", " ");
 
 
