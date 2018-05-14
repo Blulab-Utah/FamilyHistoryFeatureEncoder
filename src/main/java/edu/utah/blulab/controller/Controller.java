@@ -1,6 +1,6 @@
 package edu.utah.blulab.controller;
 
-import edu.utah.blulab.handlers.EncoderOperations;
+import edu.utah.blulab.handlers.Encoder;
 import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 
@@ -13,7 +13,7 @@ public class Controller {
     private static Logger logger = Logger.getLogger(Controller.class);
     public static void main(String[] args) {
         try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(EncoderOperations.class.getResource("/data/Example_Fhx-ca_sentences.txt").getPath()));
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(Encoder.class.getResource("/data/Example_Fhx-ca_sentences.txt").getPath()));
             String line;
             String[] wordsArray;
             bufferedReader.readLine();
@@ -31,9 +31,7 @@ public class Controller {
                     String modifier = wordsArray[2];
                     String rawText = wordsArray[3];
                     result += "\nFilename: "+wordsArray[0];
-                    result += "\nTarget: " +target;
-                    result += "\nModifier: " +modifier;
-                    result += EncoderOperations.getEncodedFeatures(target,modifier,rawText);
+                    result += Encoder.getEncodedFeatures(target,modifier,rawText);
                     result += "\n_________________________________________________________________________________\n";
                     logger.info(result);
                 }
